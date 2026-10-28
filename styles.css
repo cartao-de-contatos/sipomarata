@@ -1,102 +1,256 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ---------- Cores da marca (tiradas dos logos) ---------- */
+:root {
+  --azul: #004b88;           /* azul do "Sipolatti" */
+  --azul-selo: #245490;      /* azul do selo "Toda casa tem." */
+  --ciano: #00a5c8;
+  --celeste: #3fb6e5;
+  --amarelo: #ffc20e;
+  --laranja: #f28a1f;
+
+  --fundo: #eef4fb;
+  --fundo-2: #dde9f6;
+  --tinta: #0b2340;
+  --tinta-2: #4b607a;
+  --acento: var(--laranja);
+  --vidro-a: rgba(255, 255, 255, .72);
+  --vidro-b: rgba(255, 255, 255, .38);
+  --vidro-base: transparent;
+  --vidro-borda: rgba(255, 255, 255, .85);
+  --vidro-brilho: rgba(255, 255, 255, .95);
+  --sombra: 0 18px 40px -20px rgba(0, 45, 90, .45);
+  --mancha-1: #7fd3ec;
+  --mancha-2: #ffd45c;
+  --mancha-3: #ffab5e;
+  --letra: var(--azul);
+  --estrelas: 0;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --fundo: #021a33;
+  --fundo-2: #062849;
+  --tinta: #f1f6fb;
+  --tinta-2: #9fb4cb;
+  --vidro-a: rgba(255, 255, 255, .12);
+  --vidro-b: rgba(255, 255, 255, .04);
+  --vidro-base: rgba(2, 26, 51, .62);
+  --vidro-borda: rgba(255, 255, 255, .16);
+  --vidro-brilho: rgba(255, 255, 255, .26);
+  --sombra: 0 22px 50px -20px rgba(0, 0, 0, .75);
+  --mancha-1: #00a5c8;
+  --mancha-2: #f28a1f;
+  --mancha-3: #245490;
+  --letra: #d9e6f3;
+  --estrelas: 1;
+  color-scheme: dark;
 }
 
-a {
-    text-decoration: none;
-}
-
-html {
-    --bg-color: #EDF2FF;
-    --text-color:#3441A8;
-    --primary-color: #4935a3;
-    --primary-color-dark: #364FC7;
-    --heart-color: #8b42eb;
-    --slider-radius: 28px;
-    --slider-height: 20px;
-}
-
-body.dark-blue {
-    --bg-color: #00082F;
-    --text-color: #FFFFFF;
-}
-
+* { box-sizing: border-box; }
+/* cor também no html: é a que aparece ao puxar a página para atualizar */
+html { -webkit-text-size-adjust: 100%; background: var(--fundo); touch-action: manipulation; }
+a, button { touch-action: manipulation; }
 body {
-    background: #EDF2FF;
-    color: var(--text-color);
-    font-family: 'Permanent Marker', cursive;
+  margin: 0;
+  min-height: 100svh;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--tinta);
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Fundo: manchas de luz + estrelas no modo escuro ---------- */
+.ambiente { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.mancha { position: absolute; border-radius: 50%; opacity: .6; will-change: transform; }
+.mancha.m1 { width: 75vw; height: 75vw; max-width: 520px; max-height: 520px; background: radial-gradient(closest-side, var(--mancha-1), transparent); top: 26%; left: -30%; animation: flutua 16s ease-in-out infinite; }
+.mancha.m2 { width: 60vw; height: 60vw; max-width: 420px; max-height: 420px; background: radial-gradient(closest-side, var(--mancha-2), transparent); top: 52%; right: -28%; animation: flutua 19s ease-in-out infinite reverse; }
+.mancha.m3 { width: 55vw; height: 55vw; max-width: 380px; max-height: 380px; background: radial-gradient(closest-side, var(--mancha-3), transparent); bottom: -12%; left: 10%; opacity: .35; animation: flutua 22s ease-in-out infinite; }
+@keyframes flutua { 50% { transform: translate(6%, -5%) scale(1.06); } }
+.ceu { position: absolute; inset: 0; opacity: var(--estrelas); transition: opacity .8s ease; }
+.ceu .camada { position: absolute; inset: 0; background-size: 100% 100%; will-change: opacity; animation: pisca 3.6s ease-in-out infinite; }
+.ceu .camada + .camada { animation-delay: -1.8s; }
+@keyframes pisca { 50% { opacity: .3; } }
+:root:not([data-theme="dark"]) .ceu .camada { animation-play-state: paused; }
+
+.pagina {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 440px; margin: 0 auto;
+  padding: max(14px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 18px;
 }
 
-.container {
-    text-align: center;
-    width: 300px;
-    margin: 60px auto;
+/* ---------- Barra do topo ---------- */
+.topo { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.marca { font-weight: 800; font-style: italic; letter-spacing: -.03em; font-size: 1.4rem; color: var(--letra); }
+.marca span { color: var(--acento); display: inline-block; animation: ponto 2.4s ease-in-out infinite; }
+@keyframes ponto { 0%, 70%, 100% { transform: none; } 80% { transform: translateY(-5px) scale(1.3); } 90% { transform: translateY(1px); } }
+
+/* Botão claro/escuro: 44px de altura (área de toque); a pista visível é menor */
+.tema {
+  position: relative; width: 64px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  flex-shrink: 0; display: grid; place-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
-
-img {
-    width: 100%;
+.tema .pista {
+  position: relative; display: block; width: 64px; height: 32px; border-radius: 99px; overflow: hidden;
+  background: linear-gradient(180deg, #5fc8ee, var(--ciano));
+  box-shadow: inset 0 2px 5px rgba(0, 60, 100, .3), 0 5px 12px -7px rgba(0, 80, 130, .6);
+  transition: background .6s ease, box-shadow .6s ease, transform .2s ease;
 }
-
-img.avatar {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    padding: 3.5px;
-    border:#3441A8 solid 7px;
-    background-color: orange;
+.tema:active .pista { transform: scale(.94); }
+.tema:focus-visible { outline: none; }
+.tema:focus-visible .pista { outline: 3px solid var(--acento); outline-offset: 3px; }
+:root[data-theme="dark"] .tema .pista { background: linear-gradient(180deg, #03203d, #0a3462); box-shadow: inset 0 2px 6px rgba(0,0,0,.55), 0 5px 12px -7px rgba(0,0,0,.8); }
+.tema svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.tema .sol { transition: transform .6s cubic-bezier(.5,1.6,.5,1), opacity .4s; transform-origin: 22px 20px; }
+.tema .lua, .tema .estrela { opacity: 0; transition: opacity .5s ease .1s, transform .6s ease; }
+.tema .lua { transform: translateY(8px); }
+:root[data-theme="dark"] .tema .sol { opacity: 0; transform: translateY(14px) scale(.6); }
+:root[data-theme="dark"] .tema .lua { opacity: 1; transform: none; }
+:root[data-theme="dark"] .tema .estrela { opacity: 1; }
+.tema .bolinha {
+  position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, #eef3f8 70%);
+  box-shadow: 0 3px 8px rgba(0,0,0,.25);
+  transform: translateX(32px);
+  transition: transform .55s cubic-bezier(.6,1.5,.5,1);
 }
+:root[data-theme="dark"] .tema .bolinha { transform: translateX(0); }
 
-h1 {
-    font-size: 45px;
-    margin-top: 24px;
-    margin-bottom: 2px;
+/* ---------- Topo: card do logo ---------- */
+/* card flutua (propriedade translate) e inclina com o mouse (transform) */
+.hero-wrap {
+  position: relative; padding-bottom: 16px; margin-top: 18px;
+  animation: flutuar 6s ease-in-out 1s infinite;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .4s ease-out;
 }
-
-h3 {
-    margin-top: -5px;
+@keyframes flutuar { 50% { translate: 0 -7px; } }
+.hero {
+  position: relative; aspect-ratio: 100 / 78; border-radius: 34px; overflow: visible;
+  background: #fff; box-shadow: var(--sombra);
+  display: grid; place-items: center;
+  animation: aparece .8s ease both;
 }
-
-.subtitle {
-    font-family: 'Permanent Marker', cursive;
-    font-weight: 400;
-    font-size: 18px;
-    margin-top: 40px;
-    margin-bottom: -30px;
+@keyframes aparece { from { opacity: 0; transform: translateY(14px) scale(.98); } }
+/* faixas da marca no rodapé do card */
+.hero::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; border-radius: 0 0 34px 34px;
+  background: linear-gradient(180deg, rgba(0, 75, 136, 0), rgba(0, 75, 136, .07));
 }
-
-ul {
-    list-style: none;
-    margin: 48px 0;
+.hero-logo { position: relative; z-index: 1; width: 82%; height: auto; display: block; margin-top: -6%; }
+/* o "+" da marca, grande, saindo pela borda de cima do card */
+.mais { position: absolute; z-index: 2; top: -34px; right: 18px; width: 92px; height: 92px; animation: gira 7s ease-in-out 1.4s infinite; }
+.mais i { position: absolute; display: block; border-radius: 8px; box-shadow: 0 8px 16px -8px rgba(0, 40, 80, .5); }
+.mais i:nth-child(1) { left: 36px; top: 0; width: 20px; height: 40px; background: var(--amarelo); }
+.mais i:nth-child(2) { right: 0; top: 36px; width: 40px; height: 20px; background: var(--ciano); }
+.mais i:nth-child(3) { left: 36px; bottom: 0; width: 20px; height: 40px; background: var(--celeste); }
+.mais i:nth-child(4) { left: 0; top: 36px; width: 40px; height: 20px; background: var(--laranja); }
+@keyframes gira { 0%, 70%, 100% { transform: none; } 82% { transform: rotate(90deg) scale(1.06); } 90% { transform: rotate(90deg); } }
+/* aba azul "recortada" na borda de baixo do card (o anel da cor do fundo faz o recorte) */
+.aba {
+  position: absolute; z-index: 3; left: 0; bottom: 0; display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px 10px 16px; border-radius: 24px; background: var(--azul); color: #fff;
+  box-shadow: 0 0 0 6px var(--fundo);
+  animation: sobe .7s cubic-bezier(.2,.8,.2,1) .6s both;
 }
+@keyframes sobe { from { opacity: 0; transform: translateY(14px); } }
+.aba-texto { display: flex; flex-direction: column; line-height: 1.15; }
+.aba-texto small { font-size: .62rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--amarelo); }
+.aba-texto b { font-size: .9rem; font-weight: 700; }
+.bolhas { display: flex; flex-shrink: 0; }
+.bolhas span { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; margin-left: -8px; border: 2px solid var(--azul); color: #fff; animation: pula 2.8s ease-in-out infinite; }
+.bolhas span:nth-child(2) { animation-delay: .15s; }
+.bolhas span:nth-child(3) { animation-delay: .3s; }
+@keyframes pula { 0%, 55%, 100% { transform: none; } 65% { transform: translateY(-7px); } 75% { transform: translateY(1px); } }
+.bolhas span:nth-child(1) { background: var(--laranja); } /* móveis */
+.bolhas span:nth-child(2) { background: var(--ciano); }   /* eletro */
+.bolhas span:nth-child(3) { background: #f5a800; }         /* celulares */
 
-ul li a {
-    height: 53px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:#243196;
-    color: white;
-    text-transform: uppercase;
-    font-size: 14px;
-
-    margin-bottom: 12px;
-    border-radius: 10px;
+/* nome e texto logo abaixo do card */
+.apresentacao { padding: 2px 4px 0; }
+.apresentacao h1 {
+  margin: 0; font-size: clamp(2rem, 10vw, 2.5rem); line-height: 1.05; letter-spacing: -.035em; font-weight: 800; font-style: italic;
+  background: linear-gradient(100deg, var(--letra) 0 42%, var(--acento) 50%, var(--letra) 58% 100%);
+  background-size: 260% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: brilho-texto 5s ease-in-out 1.2s 1;
 }
+@keyframes brilho-texto { 0% { background-position: 100% 0; } 45%, 100% { background-position: 0 0; } }
+.apresentacao p { margin: 8px 0 0; font-size: .95rem; line-height: 1.5; color: var(--tinta-2); }
 
-.criador {
-font-size: 15px;
+/* ---------- Contatos: cards de vidro ---------- */
+.secao-titulo { margin: 6px 4px -6px; font-size: .74rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta-2); }
+.links { display: flex; flex-direction: column; gap: 12px; }
+/* vidro "simulado": degradê translúcido com borda e brilho interno (leve no celular) */
+.vidro {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--vidro-a), var(--vidro-b)), var(--vidro-base);
+  border: 1px solid var(--vidro-borda);
+  box-shadow: var(--sombra), inset 0 1px 0 var(--vidro-brilho), inset 0 -1px 0 rgba(255,255,255,.06);
 }
-
-footer:hover {
-    opacity: 1;
+.card-link {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 72px; padding: 12px 14px; border-radius: 22px;
+  -webkit-tap-highlight-color: transparent;
 }
-
-footer a {
-    color: var(--text-color);
+/* reflexo que passa sozinho pelo vidro, de tempos em tempos */
+.card-link::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 50%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: translateX(-120%) skewX(-18deg); pointer-events: none; will-change: transform;
+  animation: reflexo 6s ease-in-out var(--atraso-reflexo, 1.5s) infinite;
 }
+@keyframes reflexo { 0% { transform: translateX(-120%) skewX(-18deg); } 22%, 100% { transform: translateX(260%) skewX(-18deg); } }
+.card-link:active { scale: .98; }
+.card-link:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+/* inicial do vendedor num quadrado com as cores do "+" da marca, em rodízio */
+.card-ico { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; flex-shrink: 0; color: #fff; font-weight: 800; font-size: 1.15rem; font-style: italic; }
+.links .card-link:nth-child(4n+1) .card-ico { background: var(--azul); }
+.links .card-link:nth-child(4n+2) .card-ico { background: var(--ciano); }
+.links .card-link:nth-child(4n+3) .card-ico { background: var(--laranja); }
+.links .card-link:nth-child(4n+4) .card-ico { background: #e0a100; }
+.links .card-link .card-ico.loja { background: #25d366; }
+.card-texto { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.card-texto strong { font-size: 1rem; font-weight: 700; letter-spacing: -.01em; }
+.card-texto small { font-size: .82rem; color: var(--tinta-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-seta { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; background: var(--letra); color: var(--fundo); transition: transform .25s ease; }
+.card-seta svg { animation: empurra 2.6s ease-in-out infinite; }
+@keyframes empurra { 0%, 60%, 100% { transform: none; } 75% { transform: translateX(4px); } }
+.card-link:hover .card-seta { transform: rotate(-45deg); }
 
-footer i:hover {
-    color: var(--heart-color);
+/* ---------- Rodapé: letras gigantes + selo "Toda casa tem." ---------- */
+/* --p (−1..1) vem da rolagem: letras e selo andam em ritmos diferentes (paralaxe) */
+.assinatura { position: relative; height: 300px; margin: 10px -16px 0; overflow: hidden; --p: 0; }
+.ass-letras { position: absolute; z-index: 1; left: -14px; top: 18px; transform: translateY(calc(var(--p) * 40px)); display: flex; flex-direction: column; font-size: 9.5rem; line-height: .8; font-weight: 800; font-style: italic; letter-spacing: -.06em; user-select: none; }
+.ass-letras span:nth-child(1) { color: transparent; -webkit-text-stroke: 2.5px var(--letra); }
+.ass-letras span:nth-child(2) { color: var(--letra); margin-left: 34px; }
+.ass-letras span { display: block; opacity: 0; translate: -60px 0; transition: opacity .7s ease, translate .9s cubic-bezier(.2,.8,.2,1); }
+.ass-letras span:nth-child(2) { transition-delay: .15s; }
+.assinatura.visivel .ass-letras span { opacity: 1; translate: 0 0; }
+.ass-selo {
+  position: absolute; z-index: 2; right: 18px; top: 50%; width: min(62%, 240px); height: auto;
+  transform: translateY(calc(-50% + var(--p) * -14px)) rotate(-6deg);
+  filter: drop-shadow(0 18px 22px rgba(0, 40, 80, .35));
+  opacity: 0; translate: 40px 0; transition: opacity .8s ease .2s, translate 1s cubic-bezier(.2,.8,.2,1) .2s;
+}
+.assinatura.visivel .ass-selo { opacity: 1; translate: 0 0; }
+.fim { position: relative; z-index: 3; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: -20px; padding: 0 4px; }
+.ass-texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ass-texto b { font-size: .92rem; font-weight: 800; letter-spacing: -.01em; }
+.ass-texto a { font-size: .78rem; color: var(--tinta-2); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--tinta-2) 40%, transparent); text-underline-offset: 3px; }
+.credito { margin: 0; font-size: .74rem; color: var(--tinta-2); white-space: nowrap; }
+
+/* elementos que aparecem ao rolar */
+.revela { opacity: 0; translate: 0 26px; transition: opacity .7s ease, translate .8s cubic-bezier(.2,.8,.2,1); transition-delay: var(--atraso, 0s); }
+.revela.visivel { opacity: 1; translate: 0 0; }
+
+/* troca de tema instantânea: sem transições de cor na página (só o botão anima) */
+html.trocando-tema *:not(.tema):not(.tema *),
+html.trocando-tema *:not(.tema):not(.tema *)::before,
+html.trocando-tema *:not(.tema):not(.tema *)::after { transition: none !important; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+  .revela, .ass-letras span, .ass-selo { opacity: 1 !important; translate: none !important; }
 }

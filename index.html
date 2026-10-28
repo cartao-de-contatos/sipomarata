@@ -1,99 +1,260 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title> Loja Sipolatti - Cartão de contatos</title>
-      <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzvP6GSaK_-dr47ZySTajzQ7frVUObEbt5OA&usqp=CAU" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="styles.css">
-    
-  </head>
-  <body class="">
-    <div class="container">
-   <img
-    class="avatar"
-    src="./Marata.jpeg"
-    alt="sipo marataízes">
-      <h1>Sipolatti</h1>
-      <h3>Toda casa tem!</h3>
-      <p class="subtitle">Aqui estão os contatos dos nossos vendedores da loja de Marataízes:</p>
-      <ul>
-        <li>
-          <a
-           href="https://wa.me/5528999032255?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Andrea%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedora Andrea</a>
-        </li>
-     <li>
-          <a
-           href="https://wa.me/5528999992746?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Carlos%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Carlos</a>
-        </li>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sipolatti Marataízes | Contatos</title>
+<meta name="description" content="Fale direto com os vendedores da Sipolatti de Marataízes pelo WhatsApp.">
+<meta name="theme-color" content="#eef4fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#021a33" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Sipolatti Marataízes">
+<meta property="og:description" content="Fale direto com nossos vendedores pelo WhatsApp.">
+<meta property="og:image" content="selo-sipolatti.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='13' y='1' width='6' height='13' rx='2' fill='%23ffc20e'/%3E%3Crect x='18' y='13' width='13' height='6' rx='2' fill='%2300a5c8'/%3E%3Crect x='13' y='18' width='6' height='13' rx='2' fill='%233fb6e5'/%3E%3Crect x='1' y='13' width='13' height='6' rx='2' fill='%23f28a1f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<script>
+  // Tema antes de pintar a página (evita piscar): salvo > sistema.
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('sipo-tema'); } catch (e) {}
+    if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambiente" aria-hidden="true">
+    <div class="ceu" id="ceu"></div>
+    <div class="mancha m1"></div>
+    <div class="mancha m2"></div>
+    <div class="mancha m3"></div>
+  </div>
 
-        <li>
-          <a
-           href="https://wa.me/5528999033913?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Euller%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Euller</a>
-        </li>
+  <main class="pagina">
+    <header class="topo">
+      <span class="marca">sipolatti<span>+</span></span>
+      <button class="tema" id="tema" type="button" role="switch" aria-checked="false" aria-label="Modo escuro">
+        <span class="pista">
+        <svg viewBox="0 0 84 40" preserveAspectRatio="none" aria-hidden="true">
+          <circle class="sol" cx="22" cy="17" r="9" fill="#fff4c2" />
+          <circle class="sol" cx="22" cy="17" r="14" fill="#fff4c2" opacity=".35" />
+          <path class="lua" d="M63 9a9 9 0 1 0 9 11.5A7 7 0 1 1 63 9z" fill="#f4f1ea" />
+          <g class="estrela" fill="#fff">
+            <circle cx="48" cy="9" r=".9" /><circle cx="56" cy="17" r=".7" /><circle cx="74" cy="8" r=".8" />
+            <circle cx="77" cy="24" r=".7" /><circle cx="51" cy="25" r=".6" />
+          </g>
+        </svg>
+        <span class="bolinha"></span>
+        </span>
+      </button>
+    </header>
 
-        <li>
-          <a
-           href="https://wa.me/5528999627648?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Francisco%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Francisco</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999631899?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Gerusa%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedora Gerusa</a>
-        </li>
-
-        
-           <li>
-          <a
-           href="https://wa.me/5528999186512?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Lucas%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Lucas</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999427116?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Miguel%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Miguel</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999051460?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Mila%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedora Mila</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999080837?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Paloma%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedora Paloma</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999512197?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Patr%C3%ADcia%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedora Patrícia</a>
-        </li>
-
-        <li>
-          <a
-           href="https://wa.me/5528999639986?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Wemerson%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;Vendedor Wemerson</a>
-        </li>
-        <li>
-          <a
-           href="https://wa.me/5527997674267?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20Sipolatti%20de%20Marata%C3%ADzes%3F"
-          target="_blank"><i class="fa-brands fa-pareja"></i>&nbsp;WhatsApp da Loja</a>
-        </li>
-        <footer>
-            <div class="criador">Conheça nossa loja!</di>
-      </footer>
+    <!-- Topo: logo -->
+    <div class="hero-wrap">
+      <section class="hero" aria-label="Sipolatti">
+        <img class="hero-logo" src="logo-sipolatti.png" alt="Sipolatti" width="272" height="63" fetchpriority="high">
+        <span class="mais" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </section>
+      <div class="aba">
+        <span class="aba-texto"><small>Loja de Marataízes</small><b>Móveis · Eletro · Celulares</b></span>
+        <span class="bolhas" aria-hidden="true">
+          <span title="Móveis"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z"/><path d="M5 18v2M19 18v2"/></svg></span>
+          <span title="Eletrodomésticos"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+          <span title="Celulares"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+        </span>
+      </div>
     </div>
-  </body>
+    <div class="apresentacao revela">
+      <h1>Sipolatti Marataízes</h1>
+      <p>Móveis, eletrodomésticos, eletrônicos e celulares numa rede capixaba que está aqui desde 1960. Escolha um vendedor e chame no WhatsApp.</p>
+    </div>
+
+    <!-- Vendedores -->
+    <h2 class="secao-titulo revela" style="--atraso:.05s">Fale com um vendedor</h2>
+    <nav class="links" aria-label="Vendedores">
+      <a class="card-link vidro revela" href="https://wa.me/5528999032255?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Andrea%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">A</span>
+        <span class="card-texto"><strong>Andrea</strong><small>Vendedora · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999992746?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Carlos%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">C</span>
+        <span class="card-texto"><strong>Carlos</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999033913?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Euller%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">E</span>
+        <span class="card-texto"><strong>Euller</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999627648?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Francisco%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">F</span>
+        <span class="card-texto"><strong>Francisco</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999631899?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Gerusa%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">G</span>
+        <span class="card-texto"><strong>Gerusa</strong><small>Vendedora · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999186512?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Lucas%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">L</span>
+        <span class="card-texto"><strong>Lucas</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999427116?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Miguel%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">M</span>
+        <span class="card-texto"><strong>Miguel</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999051460?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Mila%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">M</span>
+        <span class="card-texto"><strong>Mila</strong><small>Vendedora · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999080837?text=Ol%C3%A1%2C%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Paloma%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">P</span>
+        <span class="card-texto"><strong>Paloma</strong><small>Vendedora · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999512197?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20vendedora%20Patr%C3%ADcia%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">P</span>
+        <span class="card-texto"><strong>Patrícia</strong><small>Vendedora · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="card-link vidro revela" href="https://wa.me/5528999639986?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20o%20vendedor%20Wemerson%3F" target="_blank" rel="noopener">
+        <span class="card-ico" aria-hidden="true">W</span>
+        <span class="card-texto"><strong>Wemerson</strong><small>Vendedor · WhatsApp</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </nav>
+
+    <!-- Loja -->
+    <h2 class="secao-titulo revela">Loja</h2>
+    <nav class="links" aria-label="Loja">
+      <a class="card-link vidro revela" href="https://wa.me/5527997674267?text=Ol%C3%A1%20nesse%20n%C3%BAmero%20falo%20com%20a%20Sipolatti%20de%20Marata%C3%ADzes%3F" target="_blank" rel="noopener">
+        <span class="card-ico loja" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+        </span>
+        <span class="card-texto"><strong>WhatsApp da Loja</strong><small>Sipolatti de Marataízes</small></span>
+        <span class="card-seta" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </nav>
+
+    <!-- Rodapé: selo "Toda casa tem." -->
+    <footer>
+      <div class="assinatura">
+        <div class="ass-letras" aria-hidden="true"><span>S</span><span>M</span></div>
+        <img class="ass-selo" src="selo-sipolatti.png" alt="Sipolatti — Toda casa tem." width="200" height="70" loading="lazy">
+      </div>
+      <div class="fim revela">
+        <div class="ass-texto">
+          <b>Sipolatti Marataízes</b>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Sipolatti%20Av.%20Rubens%20Rangel%201606%20Marata%C3%ADzes%20ES" target="_blank" rel="noopener">Av. Rubens Rangel, 1606 · Marataízes/ES</a>
+        </div>
+        <p class="credito">© <span id="ano">2026</span></p>
+      </div>
+    </footer>
+  </main>
+
+<script>
+  // Botão de tema
+  var raiz = document.documentElement;
+  var botao = document.getElementById('tema');
+  var cores = { light: '#eef4fb', dark: '#021a33' };
+  function aplicar(t, salvar) {
+    raiz.dataset.theme = t;
+    botao.setAttribute('aria-checked', String(t === 'dark'));
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cores[t]); });
+    if (salvar) { try { localStorage.setItem('sipo-tema', t); } catch (e) {} }
+  }
+  aplicar(raiz.dataset.theme, false);
+  function trocar() {
+    raiz.classList.add('trocando-tema');
+    aplicar(raiz.dataset.theme === 'dark' ? 'light' : 'dark', true);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { raiz.classList.remove('trocando-tema'); }); });
+  }
+  // dentro do app do Instagram/Facebook o navegador é mais lento para redesenhar
+  var navegadorDeApp = /Instagram|FBAN|FBAV|FB_IAB/i.test(navigator.userAgent);
+  botao.addEventListener('click', function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || navegadorDeApp || !document.startViewTransition) { trocar(); return; }
+    var r = botao.getBoundingClientRect();
+    var x = r.left + r.width / 2, y = r.top + r.height / 2;
+    var raio = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    var vt = document.startViewTransition(trocar);
+    vt.ready.then(function () {
+      raiz.animate(
+        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + raio + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 520, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(function () {});
+  });
+
+  // Estrelas do modo escuro: 2 imagens desenhadas uma única vez (30 estrelas cada)
+  var ceu = document.getElementById('ceu');
+  var dpr = Math.min(2, window.devicePixelRatio || 1);
+  for (var c = 0; c < 2; c++) {
+    var tela = document.createElement('canvas');
+    tela.width = Math.round(innerWidth * dpr); tela.height = Math.round(innerHeight * dpr);
+    var g = tela.getContext('2d');
+    for (var i = 0; i < 30; i++) {
+      g.globalAlpha = .4 + Math.random() * .6;
+      g.fillStyle = '#fff';
+      g.beginPath(); g.arc(Math.random() * tela.width, Math.random() * tela.height, (Math.random() < .2 ? 1.5 : 1) * dpr, 0, Math.PI * 2); g.fill();
+    }
+    var camada = document.createElement('div');
+    camada.className = 'camada';
+    camada.style.backgroundImage = 'url(' + tela.toDataURL('image/png') + ')';
+    ceu.appendChild(camada);
+  }
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Atraso de entrada e do reflexo em cascata, card a card
+  document.querySelectorAll('.card-link').forEach(function (el, i) {
+    el.style.setProperty('--atraso', (.08 + (i % 6) * .06).toFixed(2) + 's');
+    el.style.setProperty('--atraso-reflexo', (1.5 + i * .45).toFixed(2) + 's');
+  });
+
+  // Aparecer ao rolar
+  var aRevelar = document.querySelectorAll('.revela, .assinatura');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) { if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); } });
+    }, { threshold: .1 });
+    aRevelar.forEach(function (el) { obs.observe(el); });
+  } else aRevelar.forEach(function (el) { el.classList.add('visivel'); });
+
+  var calmo = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Paralaxe do rodapé
+  var assinatura = document.querySelector('.assinatura');
+  var pedido = false;
+  function paralaxe() {
+    pedido = false;
+    var r = assinatura.getBoundingClientRect();
+    var p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+    assinatura.style.setProperty('--p', Math.max(-1, Math.min(1, p)).toFixed(3));
+  }
+  if (!calmo) {
+    addEventListener('scroll', function () { if (!pedido) { pedido = true; requestAnimationFrame(paralaxe); } }, { passive: true });
+    paralaxe();
+  }
+
+  // Inclinação do card do logo seguindo o mouse (só no computador)
+  var heroWrap = document.querySelector('.hero-wrap');
+  if (!calmo && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    heroWrap.addEventListener('pointermove', function (ev) {
+      var r = heroWrap.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5;
+      heroWrap.style.setProperty('--ry', (x * 8).toFixed(2) + 'deg');
+      heroWrap.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg');
+    });
+    heroWrap.addEventListener('pointerleave', function () { heroWrap.style.setProperty('--rx', '0deg'); heroWrap.style.setProperty('--ry', '0deg'); });
+  }
+</script>
+</body>
 </html>
